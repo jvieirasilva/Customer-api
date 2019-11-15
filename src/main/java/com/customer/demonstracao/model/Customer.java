@@ -1,40 +1,44 @@
 package com.customer.demonstracao.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
 @Document(collection = "customer")
+@AllArgsConstructor()
+@NoArgsConstructor()
 public class Customer {
 	
 	@Id
 	@Field("_id")
 	private String id;
 	
-	@Field("firstName")
 	private String firstName;
 	
-	@Field("lastName")
 	private String lastName;
 	
-	@Field("cellPhone")
 	private String cellPhone;
 	
-	@Field("email")
 	private String email;
 	
-	@Field("age")
 	private Integer age;
 	
-	@Field("address")
-	private List<Address> address = new ArrayList<Address>();
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	private Date createDate = new Date();
+	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	private Date updateDate = new Date();
+	
+	private Address address = new Address();
 
 }

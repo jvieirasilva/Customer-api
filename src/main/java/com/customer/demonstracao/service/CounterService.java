@@ -22,6 +22,7 @@ public class CounterService {
       options().returnNew(true),
       Counter.class);
        
-    return counter.getSeq();
+    //return counter.getSeq();
+    return 0;
   }
 }
